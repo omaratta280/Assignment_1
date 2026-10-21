@@ -1,0 +1,8 @@
+turtle_interfaces/TargetPose target
+---
+bool success
+string message
+---
+float64 remaining_distance
+float64 heading_error
+string phase

@@ -1,0 +1,66 @@
+[INFO] [launch]: All log files can be found below /home/omaratta/.ros/log/2026-10-21-21-43-59-118719-omaratta-HP-ZBook-15-G3-22214
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [turtlesim_node-1]: process started with pid [22215]
+[INFO] [movement_node-2]: process started with pid [22217]
+[INFO] [drawing_node-3]: process started with pid [22219]
+[turtlesim_node-1] Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+[turtlesim_node-1] [INFO] [1792608239.384364448] [turtlesim]: Starting turtlesim with node name /turtlesim
+[turtlesim_node-1] [INFO] [1792608239.390453271] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
+[movement_node-2] [INFO] [1792608239.618438372] [movement_node]: Movement node ready: /go_to_pose and /set_speed_limits
+[drawing_node-3] [INFO] [1792608239.643056580] [drawing_node]: Drawing node ready: /reset_turtle and /draw_square
+[turtlesim_node-1] [INFO] [1792608241.076791553] [turtlesim]: Clearing turtlesim.
+[turtlesim_node-1] [INFO] [1792608241.636394340] [turtlesim]: Clearing turtlesim.
+[movement_node-2] [INFO] [1792608241.863967597] [movement_node]: GO_TO_POSE #1: x=8.000, y=5.500, yaw=1.571
+[movement_node-2] [INFO] [1792608247.195733845] [movement_node]: GO_TO_POSE #2: x=2.500, y=8.000, yaw=0.000
+[movement_node-2] [WARN] [1792608263.513832380] [movement_node]: Goal rejected: busy, no pose, or invalid target.
+[turtlesim_node-1] [INFO] [1792608263.860536532] [turtlesim]: Clearing turtlesim.
+[drawing_node-3] [INFO] [1792608263.878551270] [drawing_node]: SQUARE side 1/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608263.880695852] [movement_node]: GO_TO_POSE #3: x=7.544, y=5.544, yaw=1.571
+[drawing_node-3] [INFO] [1792608268.712891019] [drawing_node]: SQUARE side 2/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608268.715249336] [movement_node]: GO_TO_POSE #4: x=7.544, y=7.544, yaw=3.142
+[drawing_node-3] [INFO] [1792608273.545866962] [drawing_node]: SQUARE side 3/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608273.548044089] [movement_node]: GO_TO_POSE #5: x=5.544, y=7.544, yaw=-1.571
+[drawing_node-3] [INFO] [1792608278.379103272] [drawing_node]: SQUARE side 4/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608278.381203379] [movement_node]: GO_TO_POSE #6: x=5.544, y=5.544, yaw=0.000
+[turtlesim_node-1] [INFO] [1792608284.052581111] [turtlesim]: Clearing turtlesim.
+[drawing_node-3] [INFO] [1792608284.070672908] [drawing_node]: SQUARE side 1/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608284.073102129] [movement_node]: GO_TO_POSE #7: x=8.544, y=5.544, yaw=1.571
+[drawing_node-3] [INFO] [1792608289.386264805] [drawing_node]: SQUARE side 2/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608289.391282661] [movement_node]: GO_TO_POSE #8: x=8.544, y=8.544, yaw=3.142
+[drawing_node-3] [INFO] [1792608294.684392851] [drawing_node]: SQUARE side 3/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608294.691553449] [movement_node]: GO_TO_POSE #9: x=5.544, y=8.544, yaw=-1.571
+[drawing_node-3] [INFO] [1792608299.987518664] [drawing_node]: SQUARE side 4/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608299.992796517] [movement_node]: GO_TO_POSE #10: x=5.544, y=5.544, yaw=0.000
+[drawing_node-3] [WARN] [1792608305.823629727] [drawing_node]: Square rejected: busy or side length outside [0.2, 5.0].
+[turtlesim_node-1] [INFO] [1792608306.164578857] [turtlesim]: Clearing turtlesim.
+[turtlesim_node-1] [INFO] [1792608307.140930677] [turtlesim]: Clearing turtlesim.
+[turtlesim_node-1] [INFO] [1792608308.708951434] [turtlesim]: Clearing turtlesim.
+[drawing_node-3] [INFO] [1792608308.730353934] [drawing_node]: SQUARE side 1/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608308.735368593] [movement_node]: GO_TO_POSE #11: x=8.544, y=5.544, yaw=1.571
+[drawing_node-3] [INFO] [1792608314.017685511] [drawing_node]: SQUARE side 2/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608314.024431150] [movement_node]: GO_TO_POSE #12: x=8.544, y=8.544, yaw=3.142
+[drawing_node-3] [INFO] [1792608319.353301046] [drawing_node]: SQUARE side 3/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608319.358161988] [movement_node]: GO_TO_POSE #13: x=5.544, y=8.544, yaw=-1.571
+[drawing_node-3] [INFO] [1792608324.652408607] [drawing_node]: SQUARE side 4/4: sending one goToPose goal.
+[movement_node-2] [INFO] [1792608324.657389536] [movement_node]: GO_TO_POSE #14: x=5.544, y=5.544, yaw=0.000
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [drawing_node-3]: sending signal 'SIGINT' to process[drawing_node-3]
+[INFO] [movement_node-2]: sending signal 'SIGINT' to process[movement_node-2]
+[INFO] [turtlesim_node-1]: sending signal 'SIGINT' to process[turtlesim_node-1]
+[turtlesim_node-1] [INFO] [1792608331.184801537] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[drawing_node-3] Traceback (most recent call last):
+[drawing_node-3]   File "/home/omaratta/assignment_1/install/turtle_drawing/lib/turtle_drawing/drawing_node", line 33, in <module>
+[drawing_node-3]     sys.exit(load_entry_point('turtle-drawing', 'console_scripts', 'drawing_node')())
+[drawing_node-3]   File "/home/omaratta/assignment_1/build/turtle_drawing/turtle_drawing/drawing_node.py", line 186, in main
+[drawing_node-3]     node.destroy_node()
+[drawing_node-3]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1691, in destroy_node
+[drawing_node-3]     self.destroy_service(self._services[0])
+[drawing_node-3]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1615, in destroy_service
+[drawing_node-3]     service.destroy()
+[drawing_node-3]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/service.py", line 93, in destroy
+[drawing_node-3]     self.__service.destroy_when_not_in_use()
+[drawing_node-3] KeyboardInterrupt
+[turtlesim_node-1] [INFO] [1792608331.191886317] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [movement_node-2]: process has died [pid 22217, exit code -2, cmd '/home/omaratta/assignment_1/install/turtle_movement/lib/turtle_movement/movement_node --ros-args -r __node:=movement_node --params-file /home/omaratta/assignment_1/install/turtle_movement/share/turtle_movement/config/speeds.yaml'].
+[ERROR] [drawing_node-3]: process has died [pid 22219, exit code -2, cmd '/home/omaratta/assignment_1/install/turtle_drawing/lib/turtle_drawing/drawing_node --ros-args -r __node:=drawing_node'].
+[INFO] [turtlesim_node-1]: process has finished cleanly [pid 22215]

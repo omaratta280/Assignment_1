@@ -1,0 +1,11 @@
+
+Files:             bag_0.db3
+Bag size:          165.7 KiB
+Storage id:        sqlite3
+Duration:          22.480973660s
+Start:             Oct 21 2026 21:45:08.164464314 (1792608308.164464314)
+End:               Oct 21 2026 21:45:30.645437974 (1792608330.645437974)
+Messages:          2051
+Topic information: Topic: /turtle1/cmd_vel | Type: geometry_msgs/msg/Twist | Count: 645 | Serialization Format: cdr
+                   Topic: /turtle1/pose | Type: turtlesim/msg/Pose | Count: 1406 | Serialization Format: cdr
+

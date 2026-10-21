@@ -20,64 +20,47 @@ The project has three packages:
 
 There are two main nodes, `movement_node` and `drawing_node`. The launch file also starts the normal turtlesim node. `verify_system` is a separate program for testing the project.
 
-## Finish the checks and prepare the submission
+## Test results
 
-On the Ubuntu computer, run:
-
-```bash
-cd ~/assignment_1
-bash finish_assignment.sh
-```
-
-This builds the project, runs the nine ROS checks, records and replays the rosbag,
-then checks a fresh local build. If they pass, it creates a `github_upload` folder
-with the source packages, test logs and real bag files. The terminal prints its path.
-
-To include the phone video, give its path after the command:
-
-```bash
-bash finish_assignment.sh "/home/omaratta/Videos/demo.mp4"
-```
-
-Replace the example with the path to the actual video. The video is optional.
-Read `FINISH.txt` for the final upload steps. These real ROS checks still need to
-run on the Ubuntu computer; the results below are only filled in after they pass.
+The real ROS test logs and bag files are included inside the drawing package. The results below show the checks completed before this copy was made.
 
 ## Build and run
 
-We use ROS 2 Humble. The commands below use a folder called `assignment_1` in the Home folder.
+Use Ubuntu with ROS 2 Humble. The repository has the three package folders at its root.
+For a new workspace, clone the project like this:
 
-If the extra packages are missing, install them:
+```bash
+mkdir -p ~/assignment_1_ws/src
+cd ~/assignment_1_ws/src
+git clone https://github.com/omaratta280/Assignment_1.git assignment_1
+```
+
+If needed, install the extra packages:
 
 ```bash
 sudo apt update
 sudo apt install ros-humble-turtlesim python3-colcon-common-extensions ros-humble-ros2bag ros-humble-rosbag2-storage-default-plugins
 ```
 
-Build the project and start it:
+From the workspace folder, build and start the project:
 
 ```bash
-cd ~/assignment_1
-bash build.sh
-bash run.sh
-```
-
-Keep this terminal open. The turtle window should appear.
-
-In each new terminal, run these two lines before using the project:
-
-```bash
+cd ~/assignment_1_ws
 source /opt/ros/humble/setup.bash
-source ~/assignment_1/install/setup.bash
-```
-
-The main launch command is:
-
-```bash
+colcon build --symlink-install
+source install/setup.bash
 ros2 launch turtle_drawing lab1.launch.py
 ```
 
-Use `bash run.sh` or the launch command. Run only one copy of the full system at a time.
+Keep that terminal open. In every new terminal, run:
+
+```bash
+source /opt/ros/humble/setup.bash
+source ~/assignment_1_ws/install/setup.bash
+```
+
+The Python controller test command below is run from the repository folder,
+`~/assignment_1_ws/src/assignment_1`. Run the colcon test commands from the workspace folder.
 
 ## Check the interfaces
 
@@ -154,7 +137,7 @@ ros2 service call /set_speed_limits turtle_interfaces/srv/SetSpeedLimits "{max_l
 
 The movement node reads the limits each time it sends a movement command, so changes work during the same goal. Zero and negative values are rejected. Write speeds as decimal numbers, such as `1.0`.
 
-The starting values are saved in `src/turtle_movement/config/speeds.yaml`. After changing this file, build and run the project again. Another YAML file can also be used:
+The starting values are saved in `turtle_movement/config/speeds.yaml`. After changing this file, build and run the project again. Another YAML file can also be used:
 
 ```bash
 ros2 launch turtle_drawing lab1.launch.py params_file:=/absolute/path/speeds.yaml
@@ -162,7 +145,7 @@ ros2 launch turtle_drawing lab1.launch.py params_file:=/absolute/path/speeds.yam
 
 ## State pattern
 
-We used the State pattern in `turtle_movement/controller.py` to split the movement into four parts:
+We used the State pattern in `turtle_movement/turtle_movement/controller.py` to split the movement into four parts:
 
 - `RotateToTarget`: turn towards the point.
 - `DriveToTarget`: move towards the point.
@@ -176,7 +159,7 @@ We used the State pattern in `turtle_movement/controller.py` to split the moveme
 The four Python controller tests pass. They check movement in different directions, turning, speed limits and squares. These tests calculate the movement without running turtlesim.
 
 ```bash
-PYTHONPATH=src/turtle_movement python3 -m unittest discover -s src/turtle_movement/test -v
+PYTHONPATH=turtle_movement python3 -m unittest discover -s turtle_movement/test -v
 ```
 
 After building, the same tests can also be run with colcon:
@@ -188,11 +171,11 @@ colcon test-result --verbose
 ```
 
 <!-- REQUIRED_TESTS_START -->
-The turtle has also been run and was seen drawing lines, drawing a square and returning to the start. The final result from the full automatic test still needs to be checked.
+All nine automatic ROS checks passed on 2026-10-21T18:45:57.629617+00:00. The test log is in `turtle_drawing/bags/square_run_20261021T184357_123725Z/required_tests.log`.
 <!-- REQUIRED_TESTS_END -->
 
 <!-- CLEAN_BUILD_START -->
-The fresh local build still needs to be checked on the Ubuntu computer.
+A fresh local copy of all three packages built successfully on 2026-10-21T18:46:17.227522+00:00. The log is in `turtle_drawing/bags/square_run_20261021T184357_123725Z/clean_build.log`.
 <!-- CLEAN_BUILD_END -->
 
 With the full launch running, use a second terminal:
@@ -205,28 +188,24 @@ A successful run prints nine `PASS` lines and ends with `ALL AUTOMATIC CHECKS PA
 
 ## Rosbag
 
-A rosbag saves ROS messages so they can be played back later. For this project, we record the movement commands and the turtle's position while it draws a square.
+A rosbag saves the movement commands and turtle position. The recorded files and playback results are included below. Keep metadata.yaml and the .db3 files together. The manual recording and playback commands are in TESTING.md.
 
-After building the ZIP version of the project, run:
-
-```bash
-cd ~/assignment_1
-bash rosbag_bonus.sh
-```
-
-This script starts the project, runs the nine ROS checks, records a square and plays the commands back in a fresh turtle window. It checks that the bag has messages and that the turtle visits the four corners again. Watch the square as well.
-
-If it succeeds, it prints `ROSBAG RECORDING AND PLAYBACK PASSED`. It saves the bag under `src/turtle_drawing/bags/square_run_<timestamp>/`, fills in the results below and makes `assignment_1_with_rosbag.zip`.
-
-Keep `metadata.yaml` and all the `.db3` files together. If the script fails, read the log files in the folder it prints. The manual recording and playback commands are in `TESTING.md`.
+[Bag files](turtle_drawing/bags/square_run_20261021T184357_123725Z/bag/),
+[ROS test log](turtle_drawing/bags/square_run_20261021T184357_123725Z/required_tests.log),
+[playback results](turtle_drawing/bags/square_run_20261021T184357_123725Z/evidence.md),
+and [fresh build log](turtle_drawing/bags/square_run_20261021T184357_123725Z/clean_build.log).
 
 <!-- ROSBAG_EVIDENCE_START -->
-- Recording script: still needs a real run on the ROS computer.
-- Recording: not done yet.
-- Bag folder: add after recording.
-- Pose message count: add after recording.
-- Movement command count: add after recording.
-- Playback result: add after playback.
+- Recording checked at: 2026-10-21T18:45:57.629617+00:00
+- Real bag: `turtle_drawing/bags/square_run_20261021T184357_123725Z/bag`
+- Pose message count: 1406
+- Velocity message count: 645
+- Recorded duration: 22.48 seconds
+- Playback: ros2 bag play exited successfully; only velocity commands replayed.
+- Live trajectory: 1547 pose samples, 4/4 corners visited in order.
+- Final replay position error: 0.102; yaw error: 0.038 rad.
+- Automatic replay tolerances: 0.30 position; 0.15 rad heading.
+- Watch the simulator as well to confirm the visible square.
 <!-- ROSBAG_EVIDENCE_END -->
 
 ## What each part covers
@@ -242,38 +221,19 @@ Keep `metadata.yaml` and all the `.db3` files together. If the script fails, rea
 | R7: Speed parameters and service | Movement node and `speeds.yaml` |
 | R8: Separate packages | Interfaces, movement and drawing packages |
 | State pattern bonus | Four state classes in `controller.py` |
-| Rosbag bonus | Record and replay the square, then add the bag and results |
+| Rosbag bonus | Recorded bag and successful playback results |
 
-## GitHub submission
+## Submission
 
-Upload the three package folders, `README.md`, `TESTING.md` and `.gitignore`. Include the recorded bag inside the drawing package.
+The repository contains the three source packages and the test notes. The real bag and test logs are inside the drawing package.
 
-The repository should look like this:
+Repository: https://github.com/omaratta280/Assignment_1
 
-```text
-turtle_interfaces/
-turtle_movement/
-turtle_drawing/
-README.md
-TESTING.md
-.gitignore
-```
+Before submitting, a teammate should clone the uploaded repository into a new
+workspace, build it and follow TESTING.md. The fresh local build noted above was
+done before the GitHub upload. Add the actual clone-test result after doing it.
 
-Do not upload `build`, `install`, `log` or the workspace ZIP.
-
-For the clean build check, clone the repository into the `src` folder of a new workspace. From that workspace folder, run:
-
-```bash
-source /opt/ros/humble/setup.bash
-colcon build --symlink-install
-source install/setup.bash
-ros2 launch turtle_drawing lab1.launch.py
-```
-
-In this layout, use the normal colcon and launch commands. The `build.sh`, `run.sh` and `rosbag_bonus.sh` scripts belong to the ZIP version. The manual commands in `TESTING.md` can also be used with a cloned repository after changing the workspace path.
-
-Submit the repository link once for the whole team:
-https://forms.gle/LHsLkTmFxT3c2Hs66
+Submit the repository link once for the team through https://forms.gle/LHsLkTmFxT3c2Hs66 .
 
 ## References
 

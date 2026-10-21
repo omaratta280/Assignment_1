@@ -1,0 +1,4 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1792608333.174318704] [rosbag2_storage]: Opened database '/home/omaratta/assignment_1/src/turtle_drawing/bags/square_run_20261021T184357_123725Z/bag/bag_0.db3' for READ_ONLY.
+[INFO] [1792608333.174374893] [rosbag2_player]: Set rate to 1
+[INFO] [1792608333.180129766] [rosbag2_player]: Sleep 2000000000 ns
+[INFO] [1792608335.181746285] [rosbag2_storage]: Opened database '/home/omaratta/assignment_1/src/turtle_drawing/bags/square_run_20261021T184357_123725Z/bag/bag_0.db3' for READ_ONLY.

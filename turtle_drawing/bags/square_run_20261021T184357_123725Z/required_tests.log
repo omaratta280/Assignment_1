@@ -1,0 +1,10 @@
+PASS 1: Both actions, all test services and live pose are available.
+PASS 2: Reset twice returns to the original pose.
+PASS 3: Movement reaches position/yaw with feedback and success.
+PASS 4: Invalid speed service requests are rejected atomically.
+PASS 5: Speed changes during an active goal; new command limits respected.
+PASS 6: Out-of-window target rejected.
+PASS 7: Square run 1 completed using exactly four new movement goals.
+PASS 8: Square run 2 completed using exactly four new movement goals.
+PASS 9: Invalid square rejected; final reset succeeded.
+ALL AUTOMATIC CHECKS PASSED. Also visually inspect clean resets/right-angle squares and record/replay the rosbag.

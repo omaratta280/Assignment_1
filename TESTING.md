@@ -1,10 +1,6 @@
 # Testing
 
-These steps use `~/assignment_1` as the project folder. Run them in order. Use one full launch at a time and wait for each movement to finish before sending the next one.
-
-For one command that runs the checks and prepares the GitHub files, use
-`bash finish_assignment.sh` from the project folder. The steps below explain how
-to check each part by hand.
+These steps use `~/assignment_1_ws` as the project folder. Run them in order. Use one full launch at a time and wait for each movement to finish before sending the next one.
 
 ## First: try the arrow keys
 
@@ -35,8 +31,9 @@ After the test, press Ctrl+C in both terminals. Then start step 1 below.
 Open the first terminal:
 
 ```bash
-cd ~/assignment_1
-bash build.sh
+cd ~/assignment_1_ws
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install
 ```
 
 All three packages should build without errors. If a package is missing, install the packages listed in the README. ROS 2 Humble must already be installed.
@@ -46,7 +43,8 @@ All three packages should build without errors. If a package is missing, install
 In the same terminal:
 
 ```bash
-bash run.sh
+source ~/assignment_1_ws/install/setup.bash
+ros2 launch turtle_drawing lab1.launch.py
 ```
 
 The turtle window should open. The terminal should show that the movement and drawing nodes are ready. Keep this terminal open.
@@ -57,7 +55,7 @@ Run these two lines in every new terminal used below:
 
 ```bash
 source /opt/ros/humble/setup.bash
-source ~/assignment_1/install/setup.bash
+source ~/assignment_1_ws/install/setup.bash
 ```
 
 ## 4. Run the automatic test
@@ -206,15 +204,17 @@ It should be rejected.
 Stop the first terminal with Ctrl+C. Open this file:
 
 ```text
-~/assignment_1/src/turtle_movement/config/speeds.yaml
+~/assignment_1_ws/src/assignment_1/turtle_movement/config/speeds.yaml
 ```
 
 Change both speeds to `1.0`, then build and run the project again:
 
 ```bash
-cd ~/assignment_1
-bash build.sh
-bash run.sh
+cd ~/assignment_1_ws
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install
+source ~/assignment_1_ws/install/setup.bash
+ros2 launch turtle_drawing lab1.launch.py
 ```
 
 In a second terminal with the setup lines already run, check:
@@ -226,24 +226,7 @@ ros2 param get /movement_node max_angular_speed
 
 Both should show `1.0`. Put the file values back to `2.0` and build and run again before recording.
 
-## 11. Record and replay the rosbag
-
-There are two ways to do this. Use the script from the ZIP or follow the manual steps.
-
-### Use the script
-
-After building the project, run:
-
-```bash
-cd ~/assignment_1
-bash rosbag_bonus.sh
-```
-
-The script opens its own turtle window, runs the nine required checks, records the square, then plays it back in a new window. Watch both runs. Wait for `ROSBAG RECORDING AND PLAYBACK PASSED`.
-
-If it passes, the script saves the bag and its test results, fills in the README and makes `assignment_1_with_rosbag.zip`. If it fails, check the log folder shown in the terminal. Run the script on the Ubuntu computer with ROS 2 Humble.
-
-If the script works, the manual steps below are another way to do the same check.
+## 11. Record the rosbag
 
 ### Record manually
 
@@ -257,7 +240,7 @@ ros2 service call /reset_turtle std_srvs/srv/Trigger "{}"
 In a third terminal with the setup lines already run:
 
 ```bash
-ros2 bag record -s sqlite3 -o ~/assignment_1/src/turtle_drawing/bags/square_run /turtle1/cmd_vel /turtle1/pose
+ros2 bag record -s sqlite3 -o ~/assignment_1_ws/src/assignment_1/turtle_drawing/bags/square_run /turtle1/cmd_vel /turtle1/pose
 ```
 
 Wait until the recorder shows that it has subscribed to both topics. In the second terminal, draw the square:
@@ -269,7 +252,7 @@ ros2 action send_goal /draw_square turtle_interfaces/action/DrawSquare "{side_le
 Wait for the square to finish. Then press Ctrl+C in the recorder terminal so the bag is saved properly.
 
 ```bash
-ros2 bag info ~/assignment_1/src/turtle_drawing/bags/square_run
+ros2 bag info ~/assignment_1_ws/src/assignment_1/turtle_drawing/bags/square_run
 ```
 
 Check that both topics have more than zero messages. Keep `metadata.yaml` and the `.db3` files together.
@@ -283,8 +266,9 @@ Stop the full launch with Ctrl+C in the first terminal. Stop any other program t
 Start turtlesim on its own:
 
 ```bash
-cd ~/assignment_1
-bash run.sh start_servers:=false
+cd ~/assignment_1_ws
+source ~/assignment_1_ws/install/setup.bash
+ros2 launch turtle_drawing lab1.launch.py start_servers:=false
 ```
 
 In the second terminal, reset the new simulator:
@@ -298,7 +282,7 @@ This is turtlesim's normal reset service. It is only used here to prepare for pl
 Play only the saved movement commands:
 
 ```bash
-ros2 bag play ~/assignment_1/src/turtle_drawing/bags/square_run --topics /turtle1/cmd_vel
+ros2 bag play ~/assignment_1_ws/src/assignment_1/turtle_drawing/bags/square_run --topics /turtle1/cmd_vel
 ```
 
 The turtle should draw about the same square again. It must start from the same position and direction as the recording. Do not play the saved `/turtle1/pose` messages over the new simulator's position messages.

@@ -1,0 +1,8 @@
+Starting >>> turtle_interfaces
+Finished <<< turtle_interfaces [10.3s]
+Starting >>> turtle_movement
+Finished <<< turtle_movement [1.36s]
+Starting >>> turtle_drawing
+Finished <<< turtle_drawing [1.41s]
+
+Summary: 3 packages finished [13.4s]

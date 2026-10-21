@@ -1,0 +1,13 @@
+[INFO] [launch]: All log files can be found below /home/omaratta/.ros/log/2026-10-21-21-45-32-028605-omaratta-HP-ZBook-15-G3-22794
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [turtlesim_node-1]: process started with pid [22795]
+[turtlesim_node-1] Warning: Ignoring XDG_SESSION_TYPE=wayland on Gnome. Use QT_QPA_PLATFORM=wayland to run on Wayland anyway.
+[turtlesim_node-1] [INFO] [1792608332.242572559] [turtlesim]: Starting turtlesim with node name /turtlesim
+[turtlesim_node-1] [INFO] [1792608332.247606778] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
+[turtlesim_node-1] [INFO] [1792608332.356233231] [turtlesim]: Resetting turtlesim.
+[turtlesim_node-1] [INFO] [1792608332.363337665] [turtlesim]: Spawning turtle [turtle1] at x=[5.544445], y=[5.544445], theta=[0.000000]
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [turtlesim_node-1]: sending signal 'SIGINT' to process[turtlesim_node-1]
+[turtlesim_node-1] [INFO] [1792608362.846116652] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[turtlesim_node-1] [INFO] [1792608362.850461348] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [turtlesim_node-1]: process has finished cleanly [pid 22795]

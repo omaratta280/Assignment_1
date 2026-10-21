@@ -1,0 +1,14 @@
+{
+  "checked_at_utc": "2026-10-21T18:45:57.629617+00:00",
+  "required_checks_passed": true,
+  "rosbag_playback_passed": true,
+  "run_directory": "src/turtle_drawing/bags/square_run_20261021T184357_123725Z",
+  "bag_directory": "src/turtle_drawing/bags/square_run_20261021T184357_123725Z/bag",
+  "counts": {
+    "/turtle1/cmd_vel": 645,
+    "/turtle1/pose": 1406
+  },
+  "playback_corners": 4,
+  "playback_position_error": 0.10167353853583036,
+  "playback_yaw_error": 0.03841105848550796
+}
